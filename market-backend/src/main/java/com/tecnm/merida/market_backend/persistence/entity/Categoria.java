@@ -1,5 +1,6 @@
 package com.tecnm.merida.market_backend.persistence.entity;
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "categorias")
@@ -17,6 +18,9 @@ public class Categoria {
     public Integer getIdCategoria() {
         return idCategoria;
     }
+
+    @OneToMany
+    private List<Producto>productos;
 
     public void setIdCategoria(Integer idCategoria) {
         this.idCategoria = idCategoria;
