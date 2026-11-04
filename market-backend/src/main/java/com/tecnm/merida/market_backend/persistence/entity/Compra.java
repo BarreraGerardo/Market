@@ -2,6 +2,8 @@ package com.tecnm.merida.market_backend.persistence.entity;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
 
 @Entity
 @Table(name = "compras")
@@ -24,9 +26,9 @@ public class Compra {
     private String estado;
 //Relación con cliente
     //Mucho compras para un Cliente
-    @ManyToOne
-    @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
-    private Cliente clientes;
+@ManyToOne
+@JoinColumn(name = "id_cliente")
+private Cliente cliente;
 
     //Relación con CompraProducto
     @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL)
@@ -81,11 +83,11 @@ public class Compra {
     }
 
     public Cliente getClientes() {
-        return clientes;
+        return cliente;
     }
 
     public void setClientes(Cliente clientes) {
-        this.clientes = clientes;
+        this.cliente = clientes;
     }
 
     public List<CompraProducto> getProductos() {
