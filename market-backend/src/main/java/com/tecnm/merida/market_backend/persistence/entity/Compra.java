@@ -24,11 +24,10 @@ public class Compra {
 
     private String comentario;
     private String estado;
-//Relación con cliente
-    //Mucho compras para un Cliente
-@ManyToOne
-@JoinColumn(name = "id_cliente")
-private Cliente cliente;
+    // Relación con cliente
+    @ManyToOne
+    @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
+    private Cliente cliente;
 
     //Relación con CompraProducto
     @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL)
