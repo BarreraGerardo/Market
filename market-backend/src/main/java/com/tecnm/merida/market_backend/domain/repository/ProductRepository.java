@@ -6,14 +6,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProductRepository {
-
-    static List<Product> getAll() {
-        return null;
-    }
-
+    List<Product> getAll();
     Optional<List<Product>> getByCategory(int categoryId);
-Optional<List<Product>>  getScarcedProduct(int quantity);
-Optional<Product> getProduct(int productId);
-Product save(Product product);
-void delete(int productId);
+    Optional<List<Product>> getScarcedProduct(int quantity);
+    Optional<Product> getProduct(int productId);
+    Product save(Product product);
+    void delete(int productId);
 }

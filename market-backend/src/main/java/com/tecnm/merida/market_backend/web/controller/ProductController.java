@@ -82,4 +82,10 @@ public class ProductController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    @PutMapping("/update")
+    public ResponseEntity<Product> update(@RequestBody Product product) {
+        return productService.update(product)
+                .map(updated -> new ResponseEntity<>(updated, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
 }
