@@ -1,30 +1,36 @@
 package com.tecnm.merida.market_backend.persistence.entity;
 
-import jakarta.persistence.*;
-import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Column;
 
 @Entity
 @Table(name = "clientes")
 public class Cliente {
 
     @Id
-    private Integer id;
+    @Column(name = "id")
+    private String id; // O correo_electronico según lo tengas configurado
+
     private String nombre;
     private String apellido;
     private String celular;
     private String direccion;
 
-    @OneToMany(mappedBy = "cliente")
-    private List<Compra> compras;
-
     @Column(name = "correo_electronico")
     private String correoElectronico;
 
-    public Integer getId() {
+    // --- NUEVO ATRIBUTO PARA EL PASSWORD ---
+    @Column(name = "contrasena")
+    private String contrasena;
+
+    // Getters y Setters
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -68,11 +74,11 @@ public class Cliente {
         this.correoElectronico = correoElectronico;
     }
 
-    public List<Compra> getCompras() {
-        return compras;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setCompras(List<Compra> compras) {
-        this.compras = compras;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 }
